@@ -106,8 +106,9 @@ const Login = (props) => {
   //   if (e.target.roles === "helper"||"admin") {
   //     history.push("/helper_dashboard");
   //   } else {
-  //     history.push("/student_dashboard");
+    history.push("/student_dashboard");
   //   }
+
   };
 
   //If everything checks, then button is enabled
@@ -177,7 +178,9 @@ const Login = (props) => {
               </Label>
             </FormGroup>
 
-            <NavLink onMouseDown={handleMouseDown}>
+            <NavLink 
+            // onMouseDown={handleMouseDown}
+            >
               Forgot username/password?
             </NavLink>
 
@@ -201,6 +204,8 @@ const Login = (props) => {
           </NavLink>
         </div>
       </div>
+      <i className="far fa-comment" style={{color: "#74CBC1", marginLeft: "50%", fontSize: "200%", marginTop: "1%"}} onMouseDown={handleMouseDown} ></i>
+      {/* <span>Chat</span> */}
       <Motion style={{ x: spring(text.open ? 100 : -1000) }}>
         {({ x }) => (
           <div>
@@ -211,7 +216,7 @@ const Login = (props) => {
                 transform: `translate3d(${x}px, 0, 0)`,
               }}
             >
-              email: alice@gmail.com password: hello
+              Hello! How can I help?
             </p>
           </div>
         )}
