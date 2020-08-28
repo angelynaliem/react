@@ -103,11 +103,10 @@ const Login = (props) => {
     console.log("Form submitted!");
     console.log("user", user);
     props.login(user)
-  //   if (e.target.roles === "helper"||"admin") {
-  //     history.push("/helper_dashboard");
-  //   } else {
-  //     history.push("/student_dashboard");
-  //   }
+    // if (e.target.user === "helper"||"admin") {
+    //   history.push("/helper_dashboard");
+    // } else {
+    history.push("/student_dashboard");
   };
 
   //If everything checks, then button is enabled

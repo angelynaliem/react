@@ -23,9 +23,9 @@ function App() {
             component={StudentDashboard}
           /> */}
           <Route path="/register" component={Register} />
-          <Route exact path="/helpertickets">
+          <PrivateRoute exact path="/helpertickets">
             <HelperTickets />
-          </Route>
+          </PrivateRoute>
           {/* <PrivateRoute
             exact
             path="/student_dashboard"
@@ -33,11 +33,11 @@ function App() {
           /> */}
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/new_ticket_form" component={NewTicketForm} />
-          <Route exact path="/student_dashboard" component={StudentDashboard} />
-          <Route path="/student_dashboard/:id">
+          <PrivateRoute exact path="/new_ticket_form" component={NewTicketForm} />
+          <PrivateRoute exact path="/student_dashboard" component={StudentDashboard} />
+          <PrivateRoute path="/student_dashboard/:id">
             <StudentDashboard />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>
