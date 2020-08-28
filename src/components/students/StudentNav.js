@@ -38,7 +38,7 @@ const StudentNav = () => {
                 <NavLink href="/helper_dashboard">Go to Helper Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/log_out">Log Out</NavLink>
+                <NavLink href="/login">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

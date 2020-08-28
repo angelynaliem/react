@@ -71,11 +71,13 @@
 }
 
   .play {
-    position: absolute;
-    width: auto;
+    /* position: absolute; */
+    width: 20%;
     height: 5%;
-    border-radius: 4px;
-    background-color: yellow;
+    border-radius: 10px;
+    padding: 1.5%;
+    border-style: solid;
+    border-color: black;
     text-align: center;
     vertical-align: middle;
 
