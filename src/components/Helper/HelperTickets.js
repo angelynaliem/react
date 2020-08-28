@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import HelperNav from './HelperNav';
 import StudentTicket from './Tickets';
+import { connect } from 'react-redux'
+import { getTicketData } from '../actions/actions'
 
 
 const MainDiv = styled.div `
@@ -33,7 +35,12 @@ h1{
 `;
 
 
-const HelperTickets = ()=>{
+const HelperTickets = props =>{
+
+    useEffect(() => {
+        props.getTicketData();
+      }, []);
+
     return(
         <div>
             <HelperNav />
@@ -49,4 +56,14 @@ const HelperTickets = ()=>{
         </div>
     )
 }
-export default HelperTickets;
+
+const mapStateToProps = (state) => {
+    return {
+      tickets: state.tickets,
+      user: state.user,
+      isFetching: state.isFetching,
+      error: state.error,
+    };
+  };
+  
+  export default connect(mapStateToProps, { getTicketData })(HelperTickets);

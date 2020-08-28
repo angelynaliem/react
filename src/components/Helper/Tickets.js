@@ -20,7 +20,7 @@ const StudentTicket = ()=>{
             axiosAuth()
             .get('/api/tickets')
             .then(res=>{
-                console.log(res)
+                //console.log(res)
                 setStudentTick(res.data);
                 
             })
@@ -34,13 +34,16 @@ const StudentTicket = ()=>{
     return (
         <div>
             {studentTick.map((item)=>(
-             <TicketDiv>   
-           <h2>{item.title}</h2>
-           <p>Description: {item.description}</p>
-           <p>Category: {item.categories}</p>
-           <p>Attempt to solve: {item.what_ive_tried}</p>
-           <p>Ticket assigned to: {item.ticketAssigned}</p>
-           </TicketDiv>
+            <TicketDiv>   
+                <h2>{item.title}</h2>
+                    <p>Description: {item.description}</p>
+                    <p>Category: {item.categories}</p>
+                    <p>Attempt to solve: {item.what_ive_tried}</p>
+                    <p>Ticket assigned to: {item.ticketAssigned}</p>
+                    <button>Help Student</button>
+                    <button>Resolved</button>
+                    <button>Release</button>
+            </TicketDiv>
            ))}
         </div>
     )
