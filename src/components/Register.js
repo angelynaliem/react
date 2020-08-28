@@ -223,5 +223,3 @@ const Register = props =>{
 }
 export default Register;
 
-
-////NEED TO FIX ERROR WITH THE CONFIRM PASSWORD ERROR MSG DISPLAYING
