@@ -16,6 +16,8 @@ import {
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 import StudentNav from "./students/StudentNav";
+import { connect } from "react-redux"
+import { login } from "./actions/actions"
 
 const Login = (props) => {
   const history = useHistory();
@@ -99,23 +101,14 @@ const Login = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     console.log("Form submitted!");
-    console.log(user);
+    console.log("user", user);
+    props.login(user)
+  //   if (e.target.roles === "helper"||"admin") {
+  //     history.push("/helper_dashboard");
+  //   } else {
+    history.push("/student_dashboard");
+  //   }
 
-    axios
-      .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/login", user)
-      .then((response) => {
-        console.log("POST is successful!", response.data);
-        window.localStorage.setItem("token", response.data.token);
-        console.log(response.data);
-        props.history.push("/student_dashboard");
-        // setServerError(null);
-        // setUser({ email: "", password: ""}); //Clear the form
-      })
-      .catch((err) => {
-        setServerError(
-          "You don't have an account with us yet. Please register!"
-        );
-      });
   };
 
   //If everything checks, then button is enabled
@@ -232,4 +225,13 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapsStateToProps = (state) => {
+  return {
+    tickets: state.tickets,
+    user: state.user,
+    isFetching: state.isFetching,
+    error: state.error,
+  };
+};
+
+export default connect(mapsStateToProps, { login })(Login);

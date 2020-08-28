@@ -13,18 +13,25 @@ const NewTicketForm = (props) => {
     title: "",
     description: "",
     what_ive_tried: "",
+    categories: [""]
   });
 
   const submitNewTicket = (e) => {
+    console.log(newTicket, "******************************************************")
     console.log("submitted!");
     e.preventDefault();
     props.addNewTicket(newTicket);
     history.push("/student_dashboard");
   };
 
+
   const handleChanges = (e) => {
-    setNewTicket({ ...newTicket, [e.target.name]: e.target.value });
+    if (e.target.name === "categories") {
+      setNewTicket({ ...newTicket, categories: [e.target.value] });
+    } else {
+      setNewTicket({ ...newTicket, [e.target.name]: e.target.value });
   };
+}
 
   return (
     <div>
@@ -75,8 +82,8 @@ const NewTicketForm = (props) => {
             <h4>Pick a category</h4>
             <select
               id="category"
-              name="category"
-              type="text"
+              name="categories"
+              //type="text"
               value={newTicket.categories}
               onChange={handleChanges}
             >
