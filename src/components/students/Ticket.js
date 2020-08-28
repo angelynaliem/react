@@ -23,7 +23,10 @@ const Ticket = (props) => {
       <CardBody>
         <CardSubtitle>Ticket #: {props.tickets.ticket_id}</CardSubtitle>
         <CardSubtitle className="ticket">
-          Category: {props.tickets.categories}
+          Category:{" "}
+          {props.tickets.categories?.map((cat) => (
+            <span className="category">{cat}</span>
+          ))}
         </CardSubtitle>
         <CardTitle className="ticketTitle">
           Title: {props.tickets.title}
