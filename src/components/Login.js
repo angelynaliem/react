@@ -30,11 +30,6 @@ const Login = (props) => {
     history.push("/register");
   };
 
-  // const goStudentDashboard = () => {
-  //   console.log("Going to student dashboard");
-  //   history.push("/student_dashboard");
-  // };
-
   //Set the state for user
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -107,7 +102,7 @@ const Login = (props) => {
         console.log("POST is successful!", response.data);
         window.localStorage.setItem("token", response.data.token);
         console.log(response.data);
-        props.history.push("/student_dashboard");
+        props.history.push("/dashboard");
         // setServerError(null);
         // setUser({ email: "", password: ""}); //Clear the form
       })

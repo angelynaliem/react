@@ -19,7 +19,7 @@ const NewTicketForm = (props) => {
     console.log("submitted!");
     e.preventDefault();
     props.addNewTicket(newTicket);
-    history.push("/student_dashboard");
+    history.push("/dashboard");
   };
 
   const handleChanges = (e) => {
