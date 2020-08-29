@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { addNewTicket } from "../actions/actions";
-import "./StudentDashboard.css";
-import StudentNav from "./StudentNav";
+import "./Dashboard.css";
+import StudentNav from "./Nav";
 import { useHistory } from "react-router-dom";
 
 const NewTicketForm = (props) => {
@@ -13,25 +13,27 @@ const NewTicketForm = (props) => {
     title: "",
     description: "",
     what_ive_tried: "",
-    categories: [""]
+    categories: [""],
   });
 
   const submitNewTicket = (e) => {
-    console.log(newTicket, "******************************************************")
+    console.log(
+      newTicket,
+      "******************************************************"
+    );
     console.log("submitted!");
     e.preventDefault();
     props.addNewTicket(newTicket);
-    history.push("/student_dashboard");
+    history.push("/dashboard");
   };
-
 
   const handleChanges = (e) => {
     if (e.target.name === "categories") {
       setNewTicket({ ...newTicket, categories: [e.target.value] });
     } else {
       setNewTicket({ ...newTicket, [e.target.name]: e.target.value });
+    }
   };
-}
 
   return (
     <div>

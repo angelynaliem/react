@@ -15,9 +15,9 @@ import {
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-import StudentNav from "./students/StudentNav";
-import { connect } from "react-redux"
-import { login } from "./actions/actions"
+import StudentNav from "./dashboard/Nav";
+import { connect } from "react-redux";
+import { login } from "./actions/actions";
 
 const Login = (props) => {
   const history = useHistory();
@@ -31,11 +31,6 @@ const Login = (props) => {
     console.log("Going to register");
     history.push("/register");
   };
-
-  // const goStudentDashboard = () => {
-  //   console.log("Going to student dashboard");
-  //   history.push("/student_dashboard");
-  // };
 
   //Set the state for user
   const [user, setUser] = useState({ email: "", password: "" });
@@ -101,13 +96,23 @@ const Login = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     console.log("Form submitted!");
-    console.log("user", user);
-    props.login(user)
-    // if (e.target.user === "helper"||"admin") {
-    //   history.push("/helper_dashboard");
-    // } else {
-    history.push("/student_dashboard");
+    console.log(user);
 
+    axios
+      .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/login", user)
+      .then((response) => {
+        console.log("POST is successful!", response.data);
+        window.localStorage.setItem("token", response.data.token);
+        console.log(response.data);
+        props.history.push("/dashboard");
+        // setServerError(null);
+        // setUser({ email: "", password: ""}); //Clear the form
+      })
+      .catch((err) => {
+        setServerError(
+          "You don't have an account with us yet. Please register!"
+        );
+      });
   };
 
   //If everything checks, then button is enabled
@@ -177,7 +182,7 @@ const Login = (props) => {
               </Label>
             </FormGroup>
 
-            <NavLink 
+            <NavLink
             // onMouseDown={handleMouseDown}
             >
               Forgot username/password?
@@ -203,7 +208,16 @@ const Login = (props) => {
           </NavLink>
         </div>
       </div>
-      <i className="far fa-comment" style={{color: "#74CBC1", marginLeft: "50%", fontSize: "200%", marginTop: "1%"}} onMouseDown={handleMouseDown} ></i>
+      <i
+        className="far fa-comment"
+        style={{
+          color: "#74CBC1",
+          marginLeft: "50%",
+          fontSize: "200%",
+          marginTop: "1%",
+        }}
+        onMouseDown={handleMouseDown}
+      ></i>
       {/* <span>Chat</span> */}
       <Motion style={{ x: spring(text.open ? 100 : -1000) }}>
         {({ x }) => (

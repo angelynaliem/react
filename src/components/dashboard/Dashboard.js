@@ -1,13 +1,12 @@
 import React from "react";
 import TicketList from "../TicketList";
-import "./StudentDashboard.css";
-import StudentNav from "./StudentNav";
+import "./Dashboard.css";
+import Nav from "./Nav";
 
 const StudentDashboard = () => {
-
   return (
     <div>
-      <StudentNav />
+      <Nav />
 
       <h2 style={{ fontFamily: "Roboto Mono , serif" }}>My Tickets</h2>
 

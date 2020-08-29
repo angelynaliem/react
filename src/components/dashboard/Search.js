@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import dummyData from "./dummyData";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import "./StudentDashboard.css";
+import "./Dashboard.css";
 
 const Search = () => {
-
   // const [searchTerm, setSearchTerm] = useState("");
 
   // const [searchResults, setSearchResults] = useState(dummyData)
@@ -33,8 +32,8 @@ const Search = () => {
             name="searchBar"
             id="searchBar"
             placeholder="Search"
-              // onChange={handleChange}
-              // value={searchTerm}
+            // onChange={handleChange}
+            // value={searchTerm}
           />
         </FormGroup>
       </Form>
