@@ -14,27 +14,31 @@ import { initialState } from "../reducer/reducer";
 import { axiosAuth } from "../utils/axiosAuth";
 
 const Ticket = (props) => {
-  useEffect(() => {
-    console.log(props.tickets);
-  }, []);
+  const { ticket } = props;
+  const { ticket_id, status } = ticket;
+  const [resolved, setResolved] = useState(status === "RESOLVED");
+
+  const handleResolve = () => {
+    axiosAuth()
+      .patch(`/api/tickets/${ticket_id}/resolve`)
+      .then((res) => setResolved(true));
+  };
 
   return (
     <Card className="card">
       <CardBody>
         <div className="ticket">
-          <CardSubtitle>Ticket #: {props.tickets.ticket_id}</CardSubtitle>
+          <CardSubtitle>Ticket #: {ticket.ticket_id}</CardSubtitle>
           <CardSubtitle className="ticket">
             Category:{" "}
-            {props.tickets.categories?.map((cat) => (
+            {ticket.categories?.map((cat) => (
               <span className="category">{cat}</span>
             ))}
           </CardSubtitle>
         </div>
-        <CardTitle className="ticketTitle">
-          Title: {props.tickets.title}
-        </CardTitle>
-        <CardText>Description: {props.tickets.description}</CardText>
-        <CardText>What I've Tried: {props.tickets.what_ive_tried}</CardText>
+        <CardTitle className="ticketTitle">Title: {ticket.title}</CardTitle>
+        <CardText>Description: {ticket.description}</CardText>
+        <CardText>What I've Tried: {ticket.what_ive_tried}</CardText>
         <Button
           onClick={() => console.log("hi")}
           style={{
@@ -60,8 +64,10 @@ const Ticket = (props) => {
             backgroundColor: "green",
             cursor: "pointer",
           }}
+          disabled={resolved}
+          onClick={handleResolve}
         >
-          Resolve
+          {resolved ? "Resolved" : "Resolve"}
         </Button>
       </CardBody>
     </Card>

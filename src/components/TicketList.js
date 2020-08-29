@@ -11,7 +11,7 @@ const TicketList = (props) => {
   return (
     <>
       {props.tickets.map((ticket) => {
-        return <Ticket key={ticket.ticket_id} tickets={ticket} />;
+        return <Ticket key={ticket.ticket_id} ticket={ticket} />;
       })}
     </>
   );
