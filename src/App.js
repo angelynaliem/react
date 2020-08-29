@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import StudentDashboard from "./components/students/StudentDashboard";
 import NewTicketForm from "./components/students/NewTicketForm";
+import PrivateRoute from "./components/utils/PrivateRoute";
 
 import { connect } from "react-redux";
 
@@ -16,11 +17,12 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/new_ticket_form" component={NewTicketForm} />
-          <Route exact path="/dashboard" component={StudentDashboard} />
-          <Route path="/dashboard/:id">
-            <StudentDashboard />
-          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/new_ticket_form"
+            component={NewTicketForm}
+          />
+          <PrivateRoute exact path="/dashboard" component={StudentDashboard} />
         </Switch>
       </div>
     </Router>
