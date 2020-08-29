@@ -21,6 +21,7 @@ const Ticket = (props) => {
   return (
     <Card className="card">
       <CardBody>
+        <div className="ticket">
         <CardSubtitle>Ticket #: {props.tickets.ticket_id}</CardSubtitle>
         <CardSubtitle className="ticket">
           Category:{" "}
@@ -28,6 +29,7 @@ const Ticket = (props) => {
             <span className="category">{cat}</span>
           ))}
         </CardSubtitle>
+        </div>
         <CardTitle className="ticketTitle">
           Title: {props.tickets.title}
         </CardTitle>

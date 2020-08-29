@@ -5,6 +5,8 @@ export const SET_TICKET_DATA = "SET_TICKET_DATA";
 export const SET_TICKET_ERROR = "SET_TICKET_ERROR";
 export const ADD_NEW_TICKET = "ADD_NEW_TICKET";
 export const SET_NEW_TICKET = "SET_NEW_TICKET";
+export const SET_LOGIN_USER = "SET_LOGIN_USER"
+export const SET_NEW_LOGIN_USER = "SET_NEW_LOGIN_USER"
 
 export const getTicketData = () => (dispatch) => {
   console.log("data", dispatch);
@@ -12,7 +14,7 @@ export const getTicketData = () => (dispatch) => {
   axiosAuth()
     .get("/api/tickets")
     .then((res) => {
-      console.log("api", res.data);
+      //console.log("api", res.data);
       dispatch({ type: SET_TICKET_DATA, payload: res.data });
     })
     .catch((err) => {
@@ -35,7 +37,21 @@ export const addNewTicket = (tickets) => (dispatch) => {
     });
 };
 
-// export const login = (user) => dispatch => {
-//     console.log('login', dispatch)
-//     dispatch()
-// }
+export const login = (user) => dispatch => {
+    console.log('login', dispatch)
+    dispatch({ type: SET_LOGIN_USER });
+    axiosAuth()
+      .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/login", user)
+      .then((res) => {
+        console.log("POST is successful!", res.data);
+        window.localStorage.setItem("token", res.data.token);
+        dispatch({ type: SET_NEW_LOGIN_USER, payload: res.data})
+        // setServerError(null);
+        // setUser({ email: "", password: ""}); //Clear the form
+      })
+      .catch((err) => {
+        console.log(
+          "You don't have an account with us yet. Please register!", err.message
+        );
+      });
+}

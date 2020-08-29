@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/dashboard" component={StudentDashboard} />
           <Route path="/dashboard/:id">
             <StudentDashboard />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>

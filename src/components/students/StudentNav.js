@@ -54,7 +54,7 @@ const StudentNav = () => {
                 <NavLink href="/dashboard">Go to Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/log_out">Log Out</NavLink>
+                <NavLink href="/login">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

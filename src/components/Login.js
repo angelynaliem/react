@@ -16,6 +16,8 @@ import {
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 import StudentNav from "./students/StudentNav";
+import { connect } from "react-redux";
+import { login } from "./actions/actions";
 
 const Login = (props) => {
   const history = useHistory();
@@ -180,7 +182,9 @@ const Login = (props) => {
               </Label>
             </FormGroup>
 
-            <NavLink onMouseDown={handleMouseDown}>
+            <NavLink
+            // onMouseDown={handleMouseDown}
+            >
               Forgot username/password?
             </NavLink>
 
@@ -204,6 +208,17 @@ const Login = (props) => {
           </NavLink>
         </div>
       </div>
+      <i
+        className="far fa-comment"
+        style={{
+          color: "#74CBC1",
+          marginLeft: "50%",
+          fontSize: "200%",
+          marginTop: "1%",
+        }}
+        onMouseDown={handleMouseDown}
+      ></i>
+      {/* <span>Chat</span> */}
       <Motion style={{ x: spring(text.open ? 100 : -1000) }}>
         {({ x }) => (
           <div>
@@ -214,7 +229,7 @@ const Login = (props) => {
                 transform: `translate3d(${x}px, 0, 0)`,
               }}
             >
-              email: alice@gmail.com password: hello
+              Hello! How can I help?
             </p>
           </div>
         )}
@@ -223,4 +238,13 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapsStateToProps = (state) => {
+  return {
+    tickets: state.tickets,
+    user: state.user,
+    isFetching: state.isFetching,
+    error: state.error,
+  };
+};
+
+export default connect(mapsStateToProps, { login })(Login);
