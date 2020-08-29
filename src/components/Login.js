@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-import StudentNav from "./students/StudentNav";
+import StudentNav from "./dashboard/Nav";
 import { connect } from "react-redux";
 import { login } from "./actions/actions";
 

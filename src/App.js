@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import StudentDashboard from "./components/students/StudentDashboard";
-import NewTicketForm from "./components/students/NewTicketForm";
+import Dashboard from "./components/dashboard/Dashboard";
+import NewTicketForm from "./components/dashboard/NewTicketForm";
 import PrivateRoute from "./components/utils/PrivateRoute";
 
 import { connect } from "react-redux";
@@ -22,7 +22,7 @@ function App() {
             path="/new_ticket_form"
             component={NewTicketForm}
           />
-          <PrivateRoute exact path="/dashboard" component={StudentDashboard} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     </Router>

@@ -9,7 +9,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import "./StudentDashboard.css";
+import "./Dashboard.css";
 import Search from "./Search";
 
 const StudentNav = () => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
-import Nav from "./students/StudentNav";
+import Nav from "./dashboard/Nav";
 
 const FormDiv = styled.div`
   display: flex;

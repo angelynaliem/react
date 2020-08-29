@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Ticket from "./students/Ticket";
+import Ticket from "./dashboard/Ticket";
 import { connect } from "react-redux";
 import { getTicketData } from "./actions/actions";
 

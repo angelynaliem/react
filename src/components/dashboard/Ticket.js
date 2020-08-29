@@ -9,7 +9,7 @@ import {
   Button,
   Label,
 } from "reactstrap";
-import "./StudentDashboard.css";
+import "./Dashboard.css";
 import { initialState } from "../reducer/reducer";
 import { axiosAuth } from "../utils/axiosAuth";
 
@@ -22,13 +22,13 @@ const Ticket = (props) => {
     <Card className="card">
       <CardBody>
         <div className="ticket">
-        <CardSubtitle>Ticket #: {props.tickets.ticket_id}</CardSubtitle>
-        <CardSubtitle className="ticket">
-          Category:{" "}
-          {props.tickets.categories?.map((cat) => (
-            <span className="category">{cat}</span>
-          ))}
-        </CardSubtitle>
+          <CardSubtitle>Ticket #: {props.tickets.ticket_id}</CardSubtitle>
+          <CardSubtitle className="ticket">
+            Category:{" "}
+            {props.tickets.categories?.map((cat) => (
+              <span className="category">{cat}</span>
+            ))}
+          </CardSubtitle>
         </div>
         <CardTitle className="ticketTitle">
           Title: {props.tickets.title}
