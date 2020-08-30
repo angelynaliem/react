@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
 import { Motion, spring } from "react-motion";
 import {
   Button,
@@ -97,23 +96,10 @@ const Login = (props) => {
     e.preventDefault();
     console.log("Form submitted!");
     console.log(user);
+    props.login(user)
+    history.push('/dashboard')
+    }
 
-    axios
-      .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/login", user)
-      .then((response) => {
-        console.log("POST is successful!", response.data);
-        window.localStorage.setItem("token", response.data.token);
-        console.log(response.data);
-        props.history.push("/dashboard");
-        // setServerError(null);
-        // setUser({ email: "", password: ""}); //Clear the form
-      })
-      .catch((err) => {
-        setServerError(
-          "You don't have an account with us yet. Please register!"
-        );
-      });
-  };
 
   //If everything checks, then button is enabled
   useEffect(() => {

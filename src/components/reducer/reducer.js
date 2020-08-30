@@ -3,7 +3,7 @@ import {
     SET_TICKET_DATA, 
     SET_TICKET_ERROR, 
     ADD_NEW_TICKET, 
-    SET_NEW_TICKET } 
+    SET_LOGIN_USER} 
     from "../actions/actions";
 
 export const initialState = {
@@ -36,13 +36,13 @@ export const ticketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true,
-                
+                tickets: [...state.tickets]
             }
-        case SET_NEW_TICKET:
+        case SET_LOGIN_USER:
             return {
                 ...state,
-                isFetching: false,
-                tickets: action.payload
+                isFetching: true,
+                user: action.payload
             }
         default:
             return state;
