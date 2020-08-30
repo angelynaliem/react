@@ -17,11 +17,6 @@ const NewTicketForm = (props) => {
   });
 
   const submitNewTicket = (e) => {
-    console.log(
-      newTicket,
-      "******************************************************"
-    );
-    console.log("submitted!");
     e.preventDefault();
     props.addNewTicket(newTicket);
     history.push("/dashboard");
