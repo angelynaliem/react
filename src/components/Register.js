@@ -66,7 +66,7 @@ const Register = (props) => {
     name: "",
     email: "",
     password: "",
-    roles: [""],
+    roles: [false],
   });
 
   const [errors, setErrors] = useState({
@@ -124,16 +124,26 @@ const Register = (props) => {
       });
   };
 
+
+
   const inputChange = (e) => {
     e.persist();
-    const newSetUp = {
-      ...newReg,
-      [e.target.name]:
-        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    if (e.target.name === "helper") {
+      setNewReg({...newReg, roles : !newReg.roles[0]})
+    //} else {
+      //[e.target.name] : e.target.value
+    //}
+
+    //const newSetUp = {
+      //...newReg,
+  
+      //e.target.name === "helper" ? newReg["helper"] = !newReg["helper"] : [e.target.name] = e.target.value
+        //e.target.type === "checkbox" ? e.target.checked : e.target.value,
     };
 
+
     validateChange(e);
-    setNewReg(newSetUp);
+    setNewReg(newReg);
   };
 
   const formSubmit = (e) => {
@@ -142,7 +152,7 @@ const Register = (props) => {
     axios
       .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/register", {
         ...newReg,
-        roles: [],
+        roles: newReg.roles ? ["helper"] : ["student"],
       })
       .then((response) => {
         console.log("POST is successful!", response.data);
@@ -219,7 +229,7 @@ const Register = (props) => {
                 id="helper"
                 data-cy="helper"
                 name="helper"
-                value={newReg.helper}
+                value={newReg.roles[0]}
                 onChange={inputChange}
               />
             </div>

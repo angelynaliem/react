@@ -54,7 +54,7 @@ const StudentNav = () => {
                 <NavLink href="/dashboard">Go to Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/login">Log Out</NavLink>
+                <NavLink href="/login" onClick={() => localStorage.clear()}>Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

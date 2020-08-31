@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
 import { addNewTicket } from "../actions/actions";
@@ -21,6 +21,10 @@ const NewTicketForm = (props) => {
     props.addNewTicket(newTicket);
     history.push("/dashboard");
   };
+
+  useEffect(() => {
+    
+  }, [props.ticket]) 
 
   const handleChanges = (e) => {
     if (e.target.name === "categories") {
