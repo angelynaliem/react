@@ -66,7 +66,7 @@ const Register = (props) => {
     name: "",
     email: "",
     password: "",
-    roles: [false],
+    roles: [""],
   });
 
   const [errors, setErrors] = useState({
@@ -124,18 +124,17 @@ const Register = (props) => {
       });
   };
 
-
-
   const inputChange = (e) => {
-    e.persist();
-    if (e.target.name === "helper") {
-      setNewReg({...newReg, roles : !newReg.roles[0]})
-    //} else {
-      //[e.target.name] : e.target.value
-    //}
+    e.persist()
+    // if (e.target.name === "helper") {
+    //   setNewReg({...newReg, roles : !newReg.roles})
+    // } else {
+    //   setNewReg({...newReg, [e.target.name]: e.target.value})
 
-    //const newSetUp = {
-      //...newReg,
+    const newSetUp = {
+      ...newReg,
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value,
   
       //e.target.name === "helper" ? newReg["helper"] = !newReg["helper"] : [e.target.name] = e.target.value
         //e.target.type === "checkbox" ? e.target.checked : e.target.value,
@@ -143,7 +142,7 @@ const Register = (props) => {
 
 
     validateChange(e);
-    setNewReg(newReg);
+    setNewReg(newSetUp);
   };
 
   const formSubmit = (e) => {
@@ -152,7 +151,7 @@ const Register = (props) => {
     axios
       .post("https://devdeskqueue3-pt.herokuapp.com/api/auth/register", {
         ...newReg,
-        roles: newReg.roles ? ["helper"] : ["student"],
+        roles: [],
       })
       .then((response) => {
         console.log("POST is successful!", response.data);
@@ -229,19 +228,10 @@ const Register = (props) => {
                 id="helper"
                 data-cy="helper"
                 name="helper"
-                value={newReg.roles[0]}
+                value={newReg.roles}
                 onChange={inputChange}
               />
             </div>
-            {/* <div>
-                 <input 
-                  type="checkbox" 
-                  id="student" 
-                  data-cy="student" 
-                  name="student" 
-                  value={newReg.student}
-                  onChange={inputChange}
-                  />Student</div> */}
           </label>
           <button data-cy="submit" type="submit" disabled={buttonDisabled}>
             Register
