@@ -34,8 +34,8 @@ const Ticket = (props, {tickets, setNewTickets}) => {
       .put(`/api/tickets/${ticket_id}`, ticketToEdit)
       .then(res => {
         console.log(res.data)
-        setNewTickets(true);
         window.location.reload()
+        setNewTickets(true);
       })
       .catch(err =>
         console.log(err))
@@ -135,7 +135,7 @@ const Ticket = (props, {tickets, setNewTickets}) => {
             type="submit"
             style={{
               marginRight: "10px",
-              backgroundColor: "red",
+              backgroundColor: "purple",
               cursor: "pointer",
             }}
             >Save
