@@ -49,7 +49,7 @@ export const ticketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                user: [...state.user]
+                user: {...state.user}
             }
         default:
             return state;

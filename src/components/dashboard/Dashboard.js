@@ -9,16 +9,16 @@ const StudentDashboard = () => {
     <div>
       <Nav />
 
-      <h2 style={{ fontFamily: "Roboto Mono , serif" }}>My Tickets</h2>
+      {/* <h2 style={{ fontFamily: "Roboto Mono , serif" }}>My Tickets</h2> */}
 
       <Container className="ticketContainer">
       <div className="openTicket">
-        <h3 style={{ fontFamily: "Roboto Mono , serif" }}>Open Tickets</h3>
+        <h2 style={{ fontFamily: "Roboto Mono , serif" }}>Tickets</h2>
         <TicketList />
       </div>
-      <div className="resolvedTicket">
+      {/* <div className="resolvedTicket">
         <h3 style={{ fontFamily: "Roboto Mono , serif" }}>Resolved Tickets</h3>
-      </div>
+      </div> */}
       </Container>
     </div>
   );
